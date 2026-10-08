@@ -37,6 +37,9 @@ project-card thumbnails, where they read as "artwork".
   uppercase for hero/footer/section titles.
 - **Body/mono-ish meta:** `Space Grotesk` 400/500 for paragraphs, labels, nav.
   Labels are uppercase, 11–12px, letter-spacing +0.14em.
+- **Guest fonts (work-gallery homages only):** `Instrument Serif` italic (Lumina),
+  `Space Mono` (Orbital HUD + card metadata), `Anton` (Atelier Noir),
+  `Cormorant Garamond` italic (Essenza). They never leak outside their card.
 
 Type scale (fluid, clamp-based):
 
@@ -72,11 +75,34 @@ Type scale (fluid, clamp-based):
 4. **Marquee** — full-bleed strip between two rules; skills separated by accent ✦
    glyphs, translating left forever (CSS animation, duplicated track). Second
    row optional reversed. Pauses for reduced-motion.
-5. **Work (horizontal)** — section pinned; vertical scroll scrubs a horizontal track of
-   **5 cards** (`01`–`05`). Each card: CSS-generated abstract gradient thumbnail
-   (conic/radial blends unique per project), giant outlined index number, project
-   title, role + year meta, tag chips. Desktop: pin+scrub. ≤768px: plain vertical
-   stack of cards, no pinning.
+5. **Work (horizontal) — "a gallery of worlds"** — section pinned; vertical scroll
+   scrubs a horizontal track of **5 cards**: the **4 real, live sites** plus a meta
+   card for this portfolio itself. Each real card is a **mini homage** to its site's
+   identity — its own palette, its own Google Font, and a signature motif rendered in
+   pure CSS (no images) — so scrubbing the shelf feels like flipping through four
+   different websites inside the Swiss grid. Giant outlined index numbers `01`–`05`
+   stay. Whole card = link, new tab, `rel="noopener"`. Desktop: pin+scrub.
+   ≤768px: plain vertical stack, no pinning, no previews.
+
+   | # | Project | URL | Homage identity | Motif (pure CSS/SVG) | Tag |
+   |---|---------|-----|-----------------|----------------------|-----|
+   | 01 | **LUMINA** | `…/lumina/` | near-black `#050507`, warm amber glow, Instrument Serif italic + Inter | radial glowing orb (amber→transparent, layered glow shadows) | Three.js · Scrollytelling |
+   | 02 | **ORBITAL** | `…/orbital/` | deep space `#030613`, electric cyan `#35E6FF`, Space Grotesk + Space Mono | starfield (repeating radial-gradient dot fields) + HUD readout `ALT 400KM`, corner brackets | WebGL · Scroll Journey |
+   | 03 | **ATELIER NOIR** | `…/atelier-noir/` | `#0A0A0A` black / `#EDEAE4` bone, Anton display, mono metadata | huge cropped "NOIR" letterforms overflowing the frame | Kinetic Type · GSAP |
+   | 04 | **ESSENZA** | `…/essenza/` | cream `#F6F1E7` → citrus `#E8A33D` → mauve `#B07A8C` → dark amber `#2E1B10`, Cormorant Garamond italic | the 4-stop color-world gradient + italic serif word-mark | Scrollytelling · Canvas |
+   | 05 | **THIS SITE** | repo on GitHub | the portfolio's own paper + `#FF4D00` | accent panel, "You're looking at it." wink | Swiss Type · GSAP · Lenis |
+
+   **Live-preview interaction (signature):** on hover — desktop fine pointers only,
+   never on touch or `prefers-reduced-motion` — the card's thumb reveals a **live
+   miniature of the real site**: an `<iframe>` of the live URL at 1280px virtual
+   width, scaled with `transform: scale(thumbWidth/1280)` (origin top-left) to fit
+   the 4:3 thumb, `pointer-events: none` (wheel keeps hitting the page, so Lenis +
+   the pinned ScrollTrigger never stall), `loading="lazy"`, `aria-hidden`,
+   `tabindex="-1"`. Iframes are **created lazily on first hover** (never upfront —
+   these are four WebGL-heavy pages), kept alive after creation, fade in at 0.35s
+   once mounted, and are re-scaled on resize. A small accent "LIVE" badge appears
+   with the preview. Card 05 has no preview (it would recurse). Fallback everywhere
+   else: the styled motif card alone.
 6. **About** — big lead paragraph revealed **line-by-line** (masked line spans slide up,
    staggered, scrubbed-adjacent trigger). Right column: numbered capability list +
    stat row (years / projects / coffee). Portrait replaced by an abstract accent
@@ -100,6 +126,7 @@ Global easing: `power4.out` for entrances, `power2.inOut` for wipes, `none` for 
 | Marquee              | always                    | CSS `translateX(0→−50%)` loop, 28s linear                     | infinite        |
 | Work pin             | section top hits top      | `x: 0 → −(track − viewport)`, `scrub: 1`, pin                 | scrub           |
 | Card inner parallax  | within pin                | thumbnail inner `x` counter-drift ±6%                          | scrub           |
+| Card live preview    | hover (fine pointer only) | lazy-create scaled iframe of live site, fade in + "LIVE" badge | 0.35s ease CSS  |
 | About lines          | line enters 85% viewport  | masked line `yPercent: 110 → 0`, stagger 0.08                 | 0.9s `power4.out` |
 | Section headers      | enter 85%                 | rule `scaleX 0→1` (origin left) + title rise                  | 0.8s            |
 | Footer giant link    | hover                     | accent fill sweeps via `background-size` on clipped text; arrow x+12px | 0.5s `power3.out` CSS |

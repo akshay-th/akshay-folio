@@ -188,6 +188,46 @@
   }
 
   /* ----------------------------------------------------------
+     Work gallery: live miniature previews.
+     Lazy iframes of the real sites, created on first hover only
+     (fine pointers, motion allowed). pointer-events: none keeps
+     wheel events on the page so Lenis + the pin never stall.
+  ---------------------------------------------------------- */
+  if (finePointer && !prefersReduced) {
+    var previewCards = $$(".card[data-preview]");
+
+    previewCards.forEach(function (card) {
+      var mount = $(".card__preview", card);
+      var url = card.getAttribute("data-preview");
+      if (!mount || !url) { return; }
+      var iframe = null;
+
+      function rescale() {
+        if (!iframe) { return; }
+        var w = mount.clientWidth || card.clientWidth || 0;
+        if (w > 0) { iframe.style.transform = "scale(" + (w / 1280).toFixed(5) + ")"; }
+      }
+
+      card.addEventListener("mouseenter", function () {
+        if (iframe) { rescale(); return; }
+        iframe = document.createElement("iframe");
+        iframe.src = url;
+        iframe.loading = "lazy";
+        iframe.tabIndex = -1;
+        iframe.setAttribute("aria-hidden", "true");
+        iframe.setAttribute("title", "Live preview");
+        iframe.addEventListener("load", function () {
+          mount.classList.add("is-ready");
+        });
+        mount.appendChild(iframe);
+        rescale();
+      });
+
+      window.addEventListener("resize", rescale);
+    });
+  }
+
+  /* ----------------------------------------------------------
      Preloader + hero intro
   ---------------------------------------------------------- */
   var preloader = document.getElementById("preloader");
@@ -319,8 +359,8 @@
         }
       });
 
-      /* Gentle counter-drift inside thumbnails for depth */
-      $$(".card__thumb-mark").forEach(function (mark) {
+      /* Gentle counter-drift of the motif word-marks for depth */
+      $$(".thumb-lumina__word, .thumb-orbital__word, .thumb-noir__word, .thumb-essenza__word, .thumb-meta__word").forEach(function (mark) {
         gsap.fromTo(mark, { xPercent: -12 }, {
           xPercent: 12,
           ease: "none",

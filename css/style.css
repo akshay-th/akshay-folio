@@ -378,6 +378,8 @@ body.cursor-on .cursor { display: block; }
 
 .card {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: clamp(300px, 34vw, 480px);
   flex-shrink: 0;
   background: var(--paper-2);
@@ -386,49 +388,270 @@ body.cursor-on .cursor { display: block; }
   transition: border-color 0.3s ease;
 }
 
-.card:hover { border-color: var(--accent); }
+.card:hover, .card:focus-visible { border-color: var(--accent); }
 
 .card__thumb {
   position: relative;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
 }
 
 .card__thumb::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
     repeating-linear-gradient(0deg, rgba(20,20,18,0.05) 0 1px, transparent 1px 24px),
     repeating-linear-gradient(90deg, rgba(20,20,18,0.05) 0 1px, transparent 1px 24px);
   mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
-.card__thumb-mark {
+/* Live miniature preview (iframe mounted by JS on first hover) */
+.card__preview {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: block;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  background: transparent;
+}
+
+.card__preview iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1280px;
+  height: 960px;
+  border: 0;
+  transform-origin: 0 0;
+  pointer-events: none;
+  background: #000;
+}
+
+.card:hover .card__preview.is-ready,
+.card:focus-visible .card__preview.is-ready { opacity: 1; }
+
+.card__live {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--accent);
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  padding: 4px 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card__live::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--paper);
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+.card[data-preview]:hover .card__live,
+.card[data-preview]:focus-visible .card__live { opacity: 1; }
+
+/* ---- Homage motifs: each card borrows its site's identity ---- */
+
+/* 01 LUMINA — near-black, warm glowing orb, Instrument Serif */
+.thumb-lumina { background: #050507; gap: 6px; }
+
+.thumb-lumina__orb {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  width: clamp(64px, 7vw, 96px);
+  height: clamp(64px, 7vw, 96px);
+  margin-left: calc(clamp(64px, 7vw, 96px) / -2);
+  border-radius: 50%;
+  background: radial-gradient(circle at 42% 38%, #FFF4DC 0%, #FFCE7A 35%, #FF9E3D 62%, rgba(255, 130, 40, 0.18) 85%, transparent 100%);
+  box-shadow:
+    0 0 48px 16px rgba(255, 170, 70, 0.38),
+    0 0 120px 40px rgba(255, 140, 50, 0.16);
+}
+
+.thumb-lumina__word {
   position: relative;
+  z-index: 2;
+  margin-top: 28%;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.9rem, 2.8vw, 2.6rem);
+  letter-spacing: 0.02em;
+  color: #F5EDE2;
+}
+
+.thumb-lumina__sub {
+  position: relative;
+  z-index: 2;
+  font-family: "Inter", var(--font-body);
+  font-size: 0.56rem;
+  text-transform: uppercase;
+  letter-spacing: 0.34em;
+  color: rgba(245, 237, 226, 0.48);
+}
+
+/* 02 ORBITAL — deep space, starfield, cyan HUD, Space Mono */
+.thumb-orbital {
+  background-color: #030613;
+  background-image:
+    radial-gradient(1px 1px at 25% 25%, rgba(255,255,255,0.9), transparent 55%),
+    radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.65), transparent 55%),
+    radial-gradient(1.5px 1.5px at 45% 82%, rgba(255,255,255,0.85), transparent 55%),
+    radial-gradient(1px 1px at 88% 18%, rgba(53,230,255,0.8), transparent 55%);
+  background-size: 110px 110px, 84px 84px, 150px 150px, 130px 130px;
+}
+
+.thumb-orbital__hud {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  font-family: "Space Mono", monospace;
+  font-size: 0.54rem;
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+  color: #35E6FF;
+  text-align: left;
+}
+
+.thumb-orbital__word {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  color: #E8F8FF;
+  text-transform: uppercase;
+}
+
+.thumb-orbital__ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   z-index: 1;
+  width: 72%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(53, 230, 255, 0.35);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(-18deg) scaleY(0.32);
+}
+
+/* 03 ATELIER NOIR — black/bone, massive cropped Anton letterforms */
+.thumb-noir { background: #0A0A0A; justify-content: flex-end; align-items: flex-start; }
+
+.thumb-noir__word {
+  position: relative;
+  z-index: 2;
+  font-family: "Anton", var(--font-display);
+  font-weight: 400;
+  font-size: clamp(6rem, 10vw, 9.5rem);
+  line-height: 0.78;
+  letter-spacing: -0.01em;
+  color: #EDEAE4;
+  margin: 0 0 -0.14em -0.06em;
+  text-transform: uppercase;
+}
+
+.thumb-noir__meta {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 2;
+  font-family: "Space Mono", monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  color: rgba(237, 234, 228, 0.55);
+  text-transform: uppercase;
+  text-align: left;
+}
+
+/* 04 ESSENZA — cream→citrus→mauve→amber color worlds, Cormorant italic */
+.thumb-essenza {
+  background: linear-gradient(160deg, #F6F1E7 0%, #E8A33D 38%, #B07A8C 68%, #2E1B10 100%);
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 18px;
+}
+
+.thumb-essenza__word {
+  position: relative;
+  z-index: 2;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(2.2rem, 3.4vw, 3.2rem);
+  letter-spacing: 0.01em;
+  color: #2E1B10;
+}
+
+.thumb-essenza__sub {
+  position: relative;
+  z-index: 2;
+  align-self: flex-end;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  letter-spacing: 0.22em;
+  color: rgba(246, 241, 231, 0.85);
+}
+
+/* 05 THIS SITE — the portfolio's own paper + accent */
+.thumb-meta { background: var(--paper); align-items: flex-start; justify-content: space-between; padding: 18px; }
+
+.thumb-meta__word {
+  position: relative;
+  z-index: 2;
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(3rem, 6vw, 5rem);
-  letter-spacing: -0.04em;
-  color: rgba(244, 242, 238, 0.92);
-  mix-blend-mode: overlay;
+  font-size: clamp(2.6rem, 4.2vw, 4rem);
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  text-transform: uppercase;
+  text-align: left;
 }
 
-/* Abstract CSS-generated thumbnails — no external images */
-.card__thumb--1 { background: conic-gradient(from 210deg at 70% 30%, #FF4D00, #7A1E00 35%, #141412 60%, #FF8A50 85%, #FF4D00); }
-.card__thumb--2 { background: radial-gradient(120% 140% at 15% 20%, #FFD2BD 0%, #FF4D00 38%, #8A2B00 60%, #141412 100%); }
-.card__thumb--3 { background: linear-gradient(135deg, #141412 0%, #3A1B0E 40%, #FF4D00 78%, #FFB38F 100%); }
-.card__thumb--4 { background: conic-gradient(from 0deg at 50% 120%, #141412, #FF4D00 30%, #FFCDB2 50%, #FF4D00 70%, #141412); }
-.card__thumb--5 { background: radial-gradient(90% 90% at 80% 85%, #FF4D00 0%, #8A2B00 45%, #141412 80%), radial-gradient(40% 40% at 20% 15%, #FFC4A3 0%, transparent 70%); }
+.thumb-meta__sub {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink);
+}
 
 .card__index {
   position: absolute;
   top: 2px;
   right: 12px;
+  z-index: 5;
   font-family: var(--font-display);
   font-weight: 900;
   font-size: clamp(3.4rem, 5vw, 5rem);
@@ -440,29 +663,51 @@ body.cursor-on .cursor { display: block; }
   pointer-events: none;
 }
 
-.card__body { padding: 18px 6px 8px; }
+.card--meta .card__index { -webkit-text-stroke-color: var(--accent); mix-blend-mode: normal; }
+
+.card__body { display: block; padding: 18px 6px 8px; text-align: left; }
 
 .card__title {
+  display: block;
   font-family: var(--font-display);
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: -0.02em;
   font-size: clamp(1.4rem, 2.2vw, 2rem);
+  color: var(--ink);
 }
 
-.card__meta { margin-top: 6px; font-size: 0.78rem; color: var(--muted); }
+.card__meta { display: block; margin-top: 6px; font-size: 0.78rem; color: var(--muted); }
 
-.card__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
 
-.card__tags li {
-  font-size: 0.65rem;
+.card__tag {
+  font-family: "Space Mono", monospace;
+  font-size: 0.58rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  padding: 5px 10px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
+  letter-spacing: 0.1em;
   color: var(--muted);
 }
+
+.card__visit {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  white-space: nowrap;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .card__visit { transform: translateX(3px); }
 
 /* ---------- About ---------- */
 .about { padding-bottom: clamp(48px, 10vh, 120px); }

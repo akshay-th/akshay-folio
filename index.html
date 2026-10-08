@@ -23,7 +23,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=Space+Mono&family=Anton&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Inter:wght@400&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/style.css" />
   <noscript><style>.preloader { display: none; }</style></noscript>
@@ -102,60 +102,105 @@
           <span class="section-head__index">01</span>
           <div class="section-head__body">
             <h2 class="section-head__title">Selected<br />Work</h2>
-            <p class="section-head__note">2024 — 2026 · drag of the scroll moves the shelf</p>
+            <p class="section-head__note">Four live worlds + the one you're in · hover a card to peek inside</p>
           </div>
         </header>
         <div class="work__track" id="workTrack">
 
-          <article class="card" data-hover>
-            <div class="card__thumb card__thumb--1"><span class="card__thumb-mark">KT</span></div>
+          <a class="card card--lumina" href="https://akshay-th.github.io/lumina/" target="_blank" rel="noopener"
+             data-hover data-preview="https://akshay-th.github.io/lumina/" aria-label="Lumina — open live site in a new tab">
+            <span class="card__thumb thumb-lumina">
+              <span class="thumb-lumina__orb" aria-hidden="true"></span>
+              <span class="thumb-lumina__word" aria-hidden="true">Lumina</span>
+              <span class="thumb-lumina__sub" aria-hidden="true">light, directed</span>
+              <span class="card__preview" aria-hidden="true"></span>
+              <span class="card__live" aria-hidden="true">LIVE</span>
+            </span>
             <span class="card__index" aria-hidden="true">01</span>
-            <div class="card__body">
-              <h3 class="card__title">Kinetic Type</h3>
-              <p class="card__meta">Interactive type specimen — Design &amp; Dev, 2026</p>
-              <ul class="card__tags"><li>WebGL</li><li>Typography</li><li>GSAP</li></ul>
-            </div>
-          </article>
+            <span class="card__body">
+              <span class="card__title">Lumina</span>
+              <span class="card__meta">Cinematic smart-light scrollytelling — one orb, amber to aurora</span>
+              <span class="card__foot">
+                <span class="card__tag">Three.js · Scrollytelling</span>
+                <span class="card__visit">Visit ↗</span>
+              </span>
+            </span>
+          </a>
 
-          <article class="card" data-hover>
-            <div class="card__thumb card__thumb--2"><span class="card__thumb-mark">OR</span></div>
+          <a class="card card--orbital" href="https://akshay-th.github.io/orbital/" target="_blank" rel="noopener"
+             data-hover data-preview="https://akshay-th.github.io/orbital/" aria-label="Orbital — open live site in a new tab">
+            <span class="card__thumb thumb-orbital">
+              <span class="thumb-orbital__hud" aria-hidden="true">ALT 400KM<br />VEL 7.66KM/S</span>
+              <span class="thumb-orbital__word" aria-hidden="true">ORBITAL</span>
+              <span class="thumb-orbital__ring" aria-hidden="true"></span>
+              <span class="card__preview" aria-hidden="true"></span>
+              <span class="card__live" aria-hidden="true">LIVE</span>
+            </span>
             <span class="card__index" aria-hidden="true">02</span>
-            <div class="card__body">
-              <h3 class="card__title">Orbital</h3>
-              <p class="card__meta">Realtime analytics dashboard — Frontend, 2025</p>
-              <ul class="card__tags"><li>React</li><li>D3</li><li>WebSockets</li></ul>
-            </div>
-          </article>
+            <span class="card__body">
+              <span class="card__title">Orbital</span>
+              <span class="card__meta">A space-tourism scroll voyage — launch, orbit, return</span>
+              <span class="card__foot">
+                <span class="card__tag">WebGL · Scroll Journey</span>
+                <span class="card__visit">Visit ↗</span>
+              </span>
+            </span>
+          </a>
 
-          <article class="card" data-hover>
-            <div class="card__thumb card__thumb--3"><span class="card__thumb-mark">HT</span></div>
+          <a class="card card--noir" href="https://akshay-th.github.io/atelier-noir/" target="_blank" rel="noopener"
+             data-hover data-preview="https://akshay-th.github.io/atelier-noir/" aria-label="Atelier Noir — open live site in a new tab">
+            <span class="card__thumb thumb-noir">
+              <span class="thumb-noir__word" aria-hidden="true">NOIR</span>
+              <span class="thumb-noir__meta" aria-hidden="true">ATELIER — EST. MMXXIV / TYPE IN MOTION</span>
+              <span class="card__preview" aria-hidden="true"></span>
+              <span class="card__live" aria-hidden="true">LIVE</span>
+            </span>
             <span class="card__index" aria-hidden="true">03</span>
-            <div class="card__body">
-              <h3 class="card__title">Halftone</h3>
-              <p class="card__meta">Fashion e-commerce concept — Design &amp; Dev, 2025</p>
-              <ul class="card__tags"><li>Next.js</li><li>Headless</li><li>Motion</li></ul>
-            </div>
-          </article>
+            <span class="card__body">
+              <span class="card__title">Atelier Noir</span>
+              <span class="card__meta">Brutalist kinetic-typography studio site — black, bone, loud</span>
+              <span class="card__foot">
+                <span class="card__tag">Kinetic Type · GSAP</span>
+                <span class="card__visit">Visit ↗</span>
+              </span>
+            </span>
+          </a>
 
-          <article class="card" data-hover>
-            <div class="card__thumb card__thumb--4"><span class="card__thumb-mark">PF</span></div>
+          <a class="card card--essenza" href="https://akshay-th.github.io/essenza/" target="_blank" rel="noopener"
+             data-hover data-preview="https://akshay-th.github.io/essenza/" aria-label="Essenza — open live site in a new tab">
+            <span class="card__thumb thumb-essenza">
+              <span class="thumb-essenza__word" aria-hidden="true">Essenza</span>
+              <span class="thumb-essenza__sub" aria-hidden="true">eau de parfum</span>
+              <span class="card__preview" aria-hidden="true"></span>
+              <span class="card__live" aria-hidden="true">LIVE</span>
+            </span>
             <span class="card__index" aria-hidden="true">04</span>
-            <div class="card__body">
-              <h3 class="card__title">Pulsefield</h3>
-              <p class="card__meta">Audio-reactive visualizer — Creative Dev, 2024</p>
-              <ul class="card__tags"><li>Web Audio</li><li>Canvas</li><li>Shaders</li></ul>
-            </div>
-          </article>
+            <span class="card__body">
+              <span class="card__title">Essenza</span>
+              <span class="card__meta">Color-shifting perfume narrative — cream, citrus, mauve, amber</span>
+              <span class="card__foot">
+                <span class="card__tag">Scrollytelling · Canvas</span>
+                <span class="card__visit">Visit ↗</span>
+              </span>
+            </span>
+          </a>
 
-          <article class="card" data-hover>
-            <div class="card__thumb card__thumb--5"><span class="card__thumb-mark">PT</span></div>
+          <a class="card card--meta" href="https://github.com/akshay-th/akshay-folio" target="_blank" rel="noopener"
+             data-hover aria-label="This site — view source on GitHub">
+            <span class="card__thumb thumb-meta">
+              <span class="thumb-meta__word" aria-hidden="true">THIS<br />SITE</span>
+              <span class="thumb-meta__sub" aria-hidden="true">You're looking at it.</span>
+            </span>
             <span class="card__index" aria-hidden="true">05</span>
-            <div class="card__body">
-              <h3 class="card__title">Papertrail</h3>
-              <p class="card__meta">Editorial publishing platform — Frontend, 2024</p>
-              <ul class="card__tags"><li>Vue</li><li>CMS</li><li>A11y</li></ul>
-            </div>
-          </article>
+            <span class="card__body">
+              <span class="card__title">This Site</span>
+              <span class="card__meta">The portfolio itself — Swiss grid, one accent, no images</span>
+              <span class="card__foot">
+                <span class="card__tag">Swiss Type · GSAP · Lenis</span>
+                <span class="card__visit">Source ↗</span>
+              </span>
+            </span>
+          </a>
 
         </div>
       </div>
@@ -186,7 +231,7 @@
           </ol>
           <dl class="about__stats">
             <div><dt>07</dt><dd>Years shipping</dd></div>
-            <div><dt>40+</dt><dd>Projects launched</dd></div>
+            <div><dt>05</dt><dd>Live sites — four worlds &amp; this one</dd></div>
             <div><dt>∞</dt><dd>Filter coffees</dd></div>
           </dl>
         </div>

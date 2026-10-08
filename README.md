@@ -12,8 +12,20 @@ orange-red accent, and GSAP-driven scroll choreography.
 - Hero with staggered, masked word-by-word reveal
 - Custom cursor (accent dot + trailing ring that scales on hoverables) and magnetic nav/CTA
 - Skills marquee strip
-- Horizontal-scroll work gallery (GSAP ScrollTrigger pin + scrub, 5 projects with
-  CSS-generated gradient thumbnails — zero images)
+- Horizontal-scroll work gallery (GSAP ScrollTrigger pin + scrub) — a "gallery of
+  worlds": each card is a mini homage to a real live site (its own palette, font,
+  and a pure-CSS motif), and on hover reveals a live scaled-down iframe miniature
+  of the actual site (lazy-created, desktop only)
+
+## Showcased sites (all real, all live)
+
+| # | Project | Live | Identity |
+|---|---------|------|----------|
+| 01 | **Lumina** | https://akshay-th.github.io/lumina/ | Cinematic smart-light scrollytelling — Three.js, glowing orb, Instrument Serif |
+| 02 | **Orbital** | https://akshay-th.github.io/orbital/ | Space-tourism scroll voyage — WebGL, cyan HUD, Space Mono |
+| 03 | **Atelier Noir** | https://akshay-th.github.io/atelier-noir/ | Brutalist kinetic-typography studio — Anton, black/bone |
+| 04 | **Essenza** | https://akshay-th.github.io/essenza/ | Color-shifting perfume narrative — Cormorant Garamond, four color worlds |
+| 05 | **This site** | https://github.com/akshay-th/akshay-folio | The portfolio itself — Swiss grid, one accent, no images |
 - Line-by-line about reveal, giant "LET'S TALK" footer link with accent fill on hover
 - Live local-time readout + time-based greeting, SVG grain overlay
 - Lenis smooth scroll; full `prefers-reduced-motion` support; cursor and horizontal
