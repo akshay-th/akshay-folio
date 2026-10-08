@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AKSHAY — Creative Developer</title>
+  <meta name="description" content="Akshay is a creative developer building expressive web experiences — Swiss typography, precise motion, and code that feels designed." />
+  <meta name="theme-color" content="#F4F2EE" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AKSHAY — Creative Developer" />
+  <meta property="og:description" content="Expressive web experiences. Swiss typography meets modern motion design — GSAP scroll choreography, horizontal work gallery, one loud accent." />
+  <meta property="og:url" content="https://akshay-th.github.io/akshay-folio/" />
+  <meta property="og:site_name" content="AKSHAY — Creative Developer" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="AKSHAY — Creative Developer" />
+  <meta name="twitter:description" content="Expressive web experiences. Swiss typography meets modern motion design." />
+
+  <!-- Favicon: inline SVG data URI -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='8'%20fill='%23FF4D00'/%3E%3Ctext%20x='32'%20y='47'%20font-family='Arial,Helvetica,sans-serif'%20font-size='42'%20font-weight='900'%20fill='%23141412'%20text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <noscript><style>.preloader { display: none; }</style></noscript>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__mark">AKSHAY<sup>©</sup></div>
+    <div class="preloader__count" id="preloaderCount">000</div>
+  </div>
+
+  <!-- Grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Custom cursor -->
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__ring" id="cursorRing"></div>
+    <div class="cursor__dot" id="cursorDot"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <a href="#top" class="header__mark" data-hover data-magnetic>AKSHAY<sup>©</sup></a>
+    <nav class="header__nav" aria-label="Primary">
+      <a href="#work" class="header__link" data-hover data-magnetic>Work</a>
+      <a href="#about" class="header__link" data-hover data-magnetic>About</a>
+      <a href="#contact" class="header__link" data-hover data-magnetic>Contact</a>
+    </nav>
+    <div class="header__time" aria-label="Local time">
+      <span class="header__time-dot" aria-hidden="true"></span>
+      <span id="clock">--:--:--</span>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="hero" aria-label="Intro">
+      <div class="hero__rules" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p class="hero__eyebrow"><span class="hero__eyebrow-inner" id="greeting">Hello —</span></p>
+      <h1 class="hero__title">
+        <span class="hero__line"><span class="hero__word">AKSHAY</span></span>
+        <span class="hero__line"><span class="hero__word">BUILDS</span></span>
+        <span class="hero__line"><span class="hero__word hero__word--accent">EXPRESSIVE</span></span>
+        <span class="hero__line"><span class="hero__word">WEB&nbsp;EXPERIENCES<sup>®</sup></span></span>
+      </h1>
+      <div class="hero__meta">
+        <p class="hero__meta-item"><span class="dot dot--live" aria-hidden="true"></span>Open for select work</p>
+        <p class="hero__meta-item">Creative Developer · Est. 2019</p>
+        <p class="hero__meta-item">Bengaluru, IN — working worldwide</p>
+        <p class="hero__scroll" aria-hidden="true">Scroll&nbsp;<span class="hero__scroll-arrow">↓</span></p>
+      </div>
+    </section>
+
+    <!-- Skills marquee -->
+    <div class="marquee" aria-label="Skills">
+      <div class="marquee__track" aria-hidden="false">
+        <div class="marquee__group">
+          <span>TypeScript</span><i>✦</i><span>GSAP</span><i>✦</i><span>WebGL</span><i>✦</i>
+          <span>React</span><i>✦</i><span>Creative Coding</span><i>✦</i><span>Motion Design</span><i>✦</i>
+          <span>Node.js</span><i>✦</i><span>Accessibility</span><i>✦</i><span>UI Engineering</span><i>✦</i>
+        </div>
+        <div class="marquee__group" aria-hidden="true">
+          <span>TypeScript</span><i>✦</i><span>GSAP</span><i>✦</i><span>WebGL</span><i>✦</i>
+          <span>React</span><i>✦</i><span>Creative Coding</span><i>✦</i><span>Motion Design</span><i>✦</i>
+          <span>Node.js</span><i>✦</i><span>Accessibility</span><i>✦</i><span>UI Engineering</span><i>✦</i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Work: horizontal scroll -->
+    <section class="work" id="work" aria-label="Selected work">
+      <div class="work__pin" id="workPin">
+        <header class="section-head work__head">
+          <span class="section-head__index">01</span>
+          <div class="section-head__body">
+            <h2 class="section-head__title">Selected<br />Work</h2>
+            <p class="section-head__note">2024 — 2026 · drag of the scroll moves the shelf</p>
+          </div>
+        </header>
+        <div class="work__track" id="workTrack">
+
+          <article class="card" data-hover>
+            <div class="card__thumb card__thumb--1"><span class="card__thumb-mark">KT</span></div>
+            <span class="card__index" aria-hidden="true">01</span>
+            <div class="card__body">
+              <h3 class="card__title">Kinetic Type</h3>
+              <p class="card__meta">Interactive type specimen — Design &amp; Dev, 2026</p>
+              <ul class="card__tags"><li>WebGL</li><li>Typography</li><li>GSAP</li></ul>
+            </div>
+          </article>
+
+          <article class="card" data-hover>
+            <div class="card__thumb card__thumb--2"><span class="card__thumb-mark">OR</span></div>
+            <span class="card__index" aria-hidden="true">02</span>
+            <div class="card__body">
+              <h3 class="card__title">Orbital</h3>
+              <p class="card__meta">Realtime analytics dashboard — Frontend, 2025</p>
+              <ul class="card__tags"><li>React</li><li>D3</li><li>WebSockets</li></ul>
+            </div>
+          </article>
+
+          <article class="card" data-hover>
+            <div class="card__thumb card__thumb--3"><span class="card__thumb-mark">HT</span></div>
+            <span class="card__index" aria-hidden="true">03</span>
+            <div class="card__body">
+              <h3 class="card__title">Halftone</h3>
+              <p class="card__meta">Fashion e-commerce concept — Design &amp; Dev, 2025</p>
+              <ul class="card__tags"><li>Next.js</li><li>Headless</li><li>Motion</li></ul>
+            </div>
+          </article>
+
+          <article class="card" data-hover>
+            <div class="card__thumb card__thumb--4"><span class="card__thumb-mark">PF</span></div>
+            <span class="card__index" aria-hidden="true">04</span>
+            <div class="card__body">
+              <h3 class="card__title">Pulsefield</h3>
+              <p class="card__meta">Audio-reactive visualizer — Creative Dev, 2024</p>
+              <ul class="card__tags"><li>Web Audio</li><li>Canvas</li><li>Shaders</li></ul>
+            </div>
+          </article>
+
+          <article class="card" data-hover>
+            <div class="card__thumb card__thumb--5"><span class="card__thumb-mark">PT</span></div>
+            <span class="card__index" aria-hidden="true">05</span>
+            <div class="card__body">
+              <h3 class="card__title">Papertrail</h3>
+              <p class="card__meta">Editorial publishing platform — Frontend, 2024</p>
+              <ul class="card__tags"><li>Vue</li><li>CMS</li><li>A11y</li></ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about" aria-label="About">
+      <header class="section-head">
+        <span class="section-head__index">02</span>
+        <div class="section-head__body">
+          <h2 class="section-head__title">About</h2>
+        </div>
+      </header>
+      <div class="about__grid">
+        <p class="about__lead" id="aboutLead">
+          <span class="rline"><span class="rline__inner">I'm Akshay — a creative developer</span></span>
+          <span class="rline"><span class="rline__inner">obsessed with the seam where</span></span>
+          <span class="rline"><span class="rline__inner">typography, motion and code meet.</span></span>
+          <span class="rline"><span class="rline__inner">I design in the browser and ship</span></span>
+          <span class="rline"><span class="rline__inner">interfaces that feel <em>inevitable</em>.</span></span>
+        </p>
+        <div class="about__side">
+          <ol class="about__list">
+            <li><span>Creative direction</span></li>
+            <li><span>Interaction &amp; motion design</span></li>
+            <li><span>Frontend engineering</span></li>
+            <li><span>Design systems</span></li>
+          </ol>
+          <dl class="about__stats">
+            <div><dt>07</dt><dd>Years shipping</dd></div>
+            <div><dt>40+</dt><dd>Projects launched</dd></div>
+            <div><dt>∞</dt><dd>Filter coffees</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer / Contact -->
+  <footer class="footer is-inverted" id="contact">
+    <p class="footer__eyebrow">Have an idea worth over-engineering?</p>
+    <a class="footer__cta" href="https://github.com/akshay-th" target="_blank" rel="noopener" data-hover="text" data-magnetic>
+      <span class="footer__cta-text">LET'S&nbsp;TALK</span>
+      <span class="footer__cta-arrow" aria-hidden="true">↗</span>
+    </a>
+    <div class="footer__grid">
+      <div class="footer__col">
+        <h3 class="footer__label">Elsewhere</h3>
+        <a href="https://github.com/akshay-th" target="_blank" rel="noopener" data-hover>GitHub</a>
+        <a href="https://github.com/akshay-th" target="_blank" rel="noopener" data-hover>Are.na</a>
+        <a href="https://github.com/akshay-th" target="_blank" rel="noopener" data-hover>Read.cv</a>
+      </div>
+      <div class="footer__col">
+        <h3 class="footer__label">Local time</h3>
+        <p id="footerClock">--:--:--</p>
+      </div>
+      <div class="footer__col footer__col--end">
+        <h3 class="footer__label">Colophon</h3>
+        <p>© 2026 Akshay. Set in Archivo &amp; Space Grotesk.<br />No images were harmed — it's all CSS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Libraries (CDN only) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
